@@ -128,7 +128,7 @@ final class SearchInViewModel: SearchInViewModelInterface, SearchInViewModelOutp
     
 }
 
-extension SearchInViewModel {
+private extension SearchInViewModel {
     func apply(dependencies: SearchInViewModelDependencies){
         if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
             guard let model = data.first as? FilterPersistenceModel else { return }

@@ -15,10 +15,9 @@ class WebViewController: UIViewController {
     
     private var webViewKit: WKWebView!
     private var activityIndicatorView: NVActivityIndicatorView!
-    
     private var isLoading = PublishSubject<Bool>()
-    internal var urlString: String?
     private let disposeBag = DisposeBag()
+    internal var urlString: String?
     
     
     public static func builder(urlString: String) -> WebViewController {
@@ -26,13 +25,13 @@ class WebViewController: UIViewController {
         scene.urlString = urlString
         return scene
     }
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
         setUpBinding()
     }
-
+    
 }
 
 private extension WebViewController {
@@ -45,32 +44,32 @@ private extension WebViewController {
         isLoading
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: {[weak self] isLoading in
-            guard let self = self else { return }
-            isLoading ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
-        }).disposed(by: disposeBag)
+                guard let self = self else { return }
+                isLoading ? self.activityIndicatorView.startAnimating() : self.activityIndicatorView.stopAnimating()
+            }).disposed(by: disposeBag)
         
         setupCloseButton()
             .subscribe(onNext: {
-            self.navigationController?.dismiss(animated: true, completion: nil)
-        }).disposed(by: disposeBag)
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }).disposed(by: disposeBag)
     }
     
     func setupWebView() {
-        self.activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: self.view.bounds.maxX/2, y: self.view.bounds.maxY/2, width: 50, height: 50),
-                                                             type: .pacman,
-                                                             color: UIColor.orange.withAlphaComponent(0.7))
-        self.view.addSubview(activityIndicatorView)
+        activityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: view.bounds.maxX/2, y: view.bounds.maxY/2, width: 50, height: 50),
+                                                        type: .pacman,
+                                                        color: UIColor.orange.withAlphaComponent(0.7))
+        view.addSubview(activityIndicatorView)
         
         
         webViewKit = WKWebView()
-        self.view.addSubviewAndFill(webViewKit)
+        view.addSubviewAndFill(webViewKit)
         webViewKit.uiDelegate = self
         webViewKit.navigationDelegate = self
         guard let url = URL(string: self.urlString ?? "") else {
             return
         }
         webViewKit.load(URLRequest(url: url))
-        self.view.bringSubviewToFront(activityIndicatorView)
+        view.bringSubviewToFront(activityIndicatorView)
         
     }
     
@@ -79,14 +78,14 @@ private extension WebViewController {
         
         let logo = UIImage(named: "Logo")
         let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
+        navigationItem.titleView = imageView
     }
     
     func setupCloseButton() -> Observable<Void> {
         let icon = UIImage(named: "cross")!.resizeImage(15, opaque: false)
         let barButtonItem = UIBarButtonItem(image: icon, style: UIBarButtonItem.Style.plain, target: self, action: nil)
         barButtonItem.tintColor = UIColor.orange.withAlphaComponent(0.5)
-        self.navigationItem.rightBarButtonItem = barButtonItem
+        navigationItem.rightBarButtonItem = barButtonItem
         return barButtonItem.rx.tap.asObservable()
     }
 }

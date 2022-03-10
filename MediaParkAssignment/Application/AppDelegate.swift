@@ -19,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard #available(iOS 13, *)  else {
                         setupCoordinator()
         }
-            // Do nothing and go to scene delegate
-
         return true
     }
     

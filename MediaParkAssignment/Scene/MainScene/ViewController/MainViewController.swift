@@ -43,7 +43,9 @@ class MainViewController: UITabBarController, StoryboardInstantiatable  {
     
 }
 
-extension MainViewController: UITabBarControllerDelegate  {
+extension MainViewController: UITabBarControllerDelegate  {}
+
+private extension MainViewController {
     func setupUI(){
         self.navigationController?.navigationBar.isHidden = true
         defaultFrame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 110)
@@ -129,7 +131,7 @@ extension MainViewController: UITabBarControllerDelegate  {
     }
 }
 
-extension MainViewController {
+private extension MainViewController {
     func animateSearchView(show: Bool){
         if show {
             UIView.transition(with: mainNavigationViewContainer, duration: 0.5,

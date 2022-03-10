@@ -25,7 +25,6 @@ class MainCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Observable<CoordinationResult> {
-        
         let realmManager = RealmManager()
         let dependencies = MainViewModelDependencies(
             realmManager: realmManager,
@@ -48,7 +47,6 @@ class MainCoordinator: BaseCoordinator<Void> {
                 case .news:
                     return coordinate(to: NewsCoordinator(navigationController: element))
                 case .search:
-                    
                     let searchCoordinator = SearchCoordinator(mainViewController: mainViewController, navigationController: element, realmManager: realmManager)
                     
                     searchCoordinator.showBadger

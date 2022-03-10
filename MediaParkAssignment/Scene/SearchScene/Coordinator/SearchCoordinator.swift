@@ -12,9 +12,8 @@ import RxRelay
 class SearchCoordinator: BaseCoordinator<Void> {
     
     private let navigationController: UINavigationController
-    private let realmManager: RealmManager
-    
     private let mainViewController: UIViewController!
+    private let realmManager: RealmManager
     
     var searchRelay = PublishRelay<String>()
     var filterRelay = PublishRelay<Void>()

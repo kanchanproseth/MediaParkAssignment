@@ -60,7 +60,11 @@ extension NewsApi: TargetType {
 }
 
 extension NewsApi {
-    func setUpParamSearch(params: inout [String: String], query: String?, filter: String?, from: String?, to: String?, sortBy: String?) {
+    func setUpParamSearch(params: inout [String: String],
+                          query: String?, filter: String?,
+                          from: String?,
+                          to: String?,
+                          sortBy: String?) {
         if let query = query {
             params["q"] = query
         }

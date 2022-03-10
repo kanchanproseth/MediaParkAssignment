@@ -66,8 +66,6 @@ private extension MainNavigationView {
         
         badgerLabel.layer.masksToBounds = true
         badgerLabel.layer.cornerRadius = 10
-        
-//        badgerLabel.isHidden = true
 
         searchTextField.leftViewMode = .always
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))

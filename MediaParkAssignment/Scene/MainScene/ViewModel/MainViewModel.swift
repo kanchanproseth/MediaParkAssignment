@@ -44,14 +44,12 @@ final class MainViewModel: MainViewModelInterface, MainViewModelOutputs, MainVie
     var relevanceViewTapTrigger = PublishRelay<Void>()
     var sortTypeConfigureView = PublishRelay<SortView.SortType>()
     
-    private var sortType: SortView.SortType? = .updateDate
-    
     // MARK: - Outputs
     var isLoading = PublishSubject<Bool>()
     var isError = PublishRelay<Error?>()
     
     private let disposeBag = DisposeBag()
-    
+    private var sortType: SortView.SortType? = .updateDate
     
     init(dependencies: MainViewModelDependencies) {
         
@@ -74,7 +72,7 @@ final class MainViewModel: MainViewModelInterface, MainViewModelOutputs, MainVie
 }
 
 
-extension MainViewModel {
+private extension MainViewModel {
     func checkLocalData(dependencies: MainViewModelDependencies) {
         if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
             guard let model = data.first as? FilterPersistenceModel else { return }

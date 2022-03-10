@@ -37,14 +37,8 @@ final class HomeViewModel: HomePresenterInterface, HomePresenterOutputs, HomePre
     // MARK: - Outputs
     var viewConfigure = PublishRelay<Void>()
     
-    
     private let disposeBag = DisposeBag()
     
     
-    init(dependencies: HomePresenterDependencies) {
-        
-        
-        
-        
-    }
+    init(dependencies: HomePresenterDependencies) { }
 }

@@ -87,7 +87,7 @@ private extension SearchViewController {
     }
 }
 
-extension SearchViewController {
+private extension SearchViewController {
     func animateChangeTableView(_ isSearching: Bool) {
         UIView.transition(with: view, duration: 1,
                           options: isSearching ? .transitionCurlDown : .transitionCurlUp,

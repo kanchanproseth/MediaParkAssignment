@@ -14,6 +14,7 @@ struct SearchHistorySectionModel {
     var header: String
     var items: [Item]
 }
+
 extension SearchHistorySectionModel: SectionModelType {
     typealias Item = SearchHistoryItem
     

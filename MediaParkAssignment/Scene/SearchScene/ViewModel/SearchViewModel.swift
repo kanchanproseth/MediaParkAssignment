@@ -79,7 +79,6 @@ final class SearchViewModel: SearchViewModelInterface, SearchViewModelOutputs, S
         }
         .do(onNext: { [weak self] _ in
             guard let self = self else { return }
-//            self.isSearching.accept(false)
             let localData = self.checkFilterLocalData(dependencies: dependencies)
             var searchBy = [String]()
             if (localData.searchByTitle == true) { searchBy.append("title")}
@@ -149,7 +148,8 @@ final class SearchViewModel: SearchViewModelInterface, SearchViewModelOutputs, S
         
     }
 }
-extension SearchViewModel {
+
+private extension SearchViewModel {
     func checkFilterLocalData(dependencies: SearchViewModelDependencies) -> FilterPersistenceModel {
         let temp = FilterPersistenceModel()
         if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), let model = data.first as? FilterPersistenceModel, data.count > 0 {
