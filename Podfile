@@ -13,6 +13,8 @@ pod 'RxCocoa'
 pod 'Moya/RxSwift'
 pod 'RxDataSources'
 pod 'RxRealm'
+
+#view
 pod 'Kingfisher', '~> 7.0'
 pod 'NVActivityIndicatorView'
 
