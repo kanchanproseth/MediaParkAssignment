@@ -73,8 +73,8 @@ final class SearchInViewModel: SearchInViewModelInterface, SearchInViewModelOutp
         
         viewDidLoadTrigger.subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
-            if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
-                guard let model = data.first as? FilterPersistenceModel else { return }
+            if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), data.count > 0 {
+                guard let model = data.first as? FilterRealmEntity else { return }
                 self.searchBy[.title] = model.searchByTitle
                 self.searchBy[.description] = model.searchByDescription
                 self.searchBy[.content] = model.searchByContent
@@ -130,15 +130,15 @@ final class SearchInViewModel: SearchInViewModelInterface, SearchInViewModelOutp
 
 private extension SearchInViewModel {
     func apply(dependencies: SearchInViewModelDependencies){
-        if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
-            guard let model = data.first as? FilterPersistenceModel else { return }
-            let temp = FilterPersistenceModel(value: model)
+        if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), data.count > 0 {
+            guard let model = data.first as? FilterRealmEntity else { return }
+            let temp = FilterRealmEntity(value: model)
             temp.searchByTitle = self.searchBy[.title] ?? false
             temp.searchByDescription = self.searchBy[.description] ?? false
             temp.searchByContent = self.searchBy[.content] ?? false
             try? dependencies.realmManager.updateObject(temp)
         } else {
-            let temp = FilterPersistenceModel()
+            let temp = FilterRealmEntity()
             temp.searchByTitle = self.searchBy[.title] ?? false
             temp.searchByDescription = self.searchBy[.description] ?? false
             temp.searchByContent = self.searchBy[.content] ?? false

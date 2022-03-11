@@ -74,14 +74,14 @@ final class MainViewModel: MainViewModelInterface, MainViewModelOutputs, MainVie
 
 private extension MainViewModel {
     func checkLocalData(dependencies: MainViewModelDependencies) {
-        if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
-            guard let model = data.first as? FilterPersistenceModel else { return }
+        if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), data.count > 0 {
+            guard let model = data.first as? FilterRealmEntity else { return }
             guard !model.sort.isEmpty else { return }
             guard let type = SortView.SortType(rawValue: model.sort) else { return }
             self.sortType = type
             sortTypeConfigureView.accept(type)
         } else {
-            let temp = FilterPersistenceModel()
+            let temp = FilterRealmEntity()
             temp.sort = SortView.SortType.updateDate.rawValue
             dependencies.realmManager.saveObject(temp)
             sortTypeConfigureView.accept(SortView.SortType.updateDate)
@@ -89,9 +89,9 @@ private extension MainViewModel {
     }
     
     func updateData(_ dependencies: MainViewModelDependencies){
-        if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
-            guard let model = data.first as? FilterPersistenceModel else { return }
-            let temp = FilterPersistenceModel(value: model)
+        if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), data.count > 0 {
+            guard let model = data.first as? FilterRealmEntity else { return }
+            let temp = FilterRealmEntity(value: model)
             temp.sort = sortType?.rawValue ?? ""
             try? dependencies.realmManager.updateObject(temp)
         }

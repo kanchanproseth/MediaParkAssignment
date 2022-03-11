@@ -62,6 +62,7 @@
 		D15CB1BF27D8EB470099BB97 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15CB1BD27D8EB470099BB97 /* WebViewController.swift */; };
 		D15CB1D627D9200A0099BB97 /* SortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D15CB1D527D9200A0099BB97 /* SortView.xib */; };
 		D15CB1D827D920150099BB97 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15CB1D727D920150099BB97 /* SortView.swift */; };
+		D1A948B027DB00780039A74B /* FilterRealmEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1A948AF27DB00780039A74B /* FilterRealmEntity.swift */; };
 		D1B7D79227D7309200EE0457 /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B7D79027D7309200EE0457 /* SearchHistoryCell.swift */; };
 		D1B7D79327D7309200EE0457 /* SearchHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B7D79127D7309200EE0457 /* SearchHistoryCell.xib */; };
 		D1B7D79727D7314B00EE0457 /* SearchHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B7D79627D7314B00EE0457 /* SearchHistoryItem.swift */; };
@@ -177,6 +178,7 @@
 		D15CB1BD27D8EB470099BB97 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		D15CB1D527D9200A0099BB97 /* SortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortView.xib; sourceTree = "<group>"; };
 		D15CB1D727D920150099BB97 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
+		D1A948AF27DB00780039A74B /* FilterRealmEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRealmEntity.swift; sourceTree = "<group>"; };
 		D1B7D79027D7309200EE0457 /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
 		D1B7D79127D7309200EE0457 /* SearchHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHistoryCell.xib; sourceTree = "<group>"; };
 		D1B7D79627D7314B00EE0457 /* SearchHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryItem.swift; sourceTree = "<group>"; };
@@ -646,6 +648,23 @@
 			path = SortView;
 			sourceTree = "<group>";
 		};
+		D1A948AD27DB00220039A74B /* LocalDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				D1A948AE27DB003B0039A74B /* Entity */,
+				D1FC1AA027D85FB20077D9A3 /* RealmManager */,
+			);
+			path = LocalDataStorage;
+			sourceTree = "<group>";
+		};
+		D1A948AE27DB003B0039A74B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D1A948AF27DB00780039A74B /* FilterRealmEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		D1B7D78F27D7306500EE0457 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +726,7 @@
 		D1BD7A4127D480020012BCA4 /* MediaParkAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				D1A948AD27DB00220039A74B /* LocalDataStorage */,
 				D1BD7A7D27D487290012BCA4 /* AppUtillity */,
 				D1BD7A7427D485DF0012BCA4 /* Resources */,
 				D1BD7A7327D480220012BCA4 /* Services */,
@@ -816,7 +836,6 @@
 			isa = PBXGroup;
 			children = (
 				D15CB1BC27D8EB180099BB97 /* WebViewController */,
-				D1FC1AA027D85FB20077D9A3 /* RealmManager */,
 				D1B7D79C27D7436600EE0457 /* SkyFloatingLabelTextField */,
 				D1598E4427D5C4D000035E0B /* PaddingTextField */,
 				D1598E1627D4B73B00035E0B /* Views */,
@@ -1228,6 +1247,7 @@
 				D1598DB427D49FC000035E0B /* AppCoordinator.swift in Sources */,
 				D1598E4127D5A7FE00035E0B /* UIImage+Extension.swift in Sources */,
 				D1598E1A27D4B76700035E0B /* CardViewCell.swift in Sources */,
+				D1A948B027DB00780039A74B /* FilterRealmEntity.swift in Sources */,
 				D1FC1A8C27D85D260077D9A3 /* SearchInViewModel.swift in Sources */,
 				D1598DC627D4A3A800035E0B /* NewsViewController.swift in Sources */,
 				D1B7D79227D7309200EE0457 /* SearchHistoryCell.swift in Sources */,

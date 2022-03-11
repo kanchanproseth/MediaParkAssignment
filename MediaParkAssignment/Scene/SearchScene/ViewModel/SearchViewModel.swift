@@ -150,9 +150,9 @@ final class SearchViewModel: SearchViewModelInterface, SearchViewModelOutputs, S
 }
 
 private extension SearchViewModel {
-    func checkFilterLocalData(dependencies: SearchViewModelDependencies) -> FilterPersistenceModel {
-        let temp = FilterPersistenceModel()
-        if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), let model = data.first as? FilterPersistenceModel, data.count > 0 {
+    func checkFilterLocalData(dependencies: SearchViewModelDependencies) -> FilterRealmEntity {
+        let temp = FilterRealmEntity()
+        if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), let model = data.first as? FilterRealmEntity, data.count > 0 {
             return model
         } else {
             dependencies.realmManager.saveObject(temp)

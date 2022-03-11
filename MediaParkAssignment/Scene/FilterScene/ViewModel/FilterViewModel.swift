@@ -123,8 +123,8 @@ final class FilterViewModel: FilterViewModelInterface, FilterViewModelOutputs, F
 
 extension FilterViewModel {
     func checkFilterLocalData(dependencies: FilterViewModelDependencies) {
-        if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
-            guard let model = data.first as? FilterPersistenceModel else { return }
+        if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), data.count > 0 {
+            guard let model = data.first as? FilterRealmEntity else { return }
             self.fromDate.accept(model.from)
             self.toDate.accept(model.to)
             self.to = model.to
@@ -144,14 +144,14 @@ extension FilterViewModel {
     }
     
     func apply(dependencies: FilterViewModelDependencies) {
-        if let data =  dependencies.realmManager.fetchObjects(FilterPersistenceModel.self), data.count > 0 {
-            guard let model = data.first as? FilterPersistenceModel else { return }
-            let temp = FilterPersistenceModel(value: model)
+        if let data =  dependencies.realmManager.fetchObjects(FilterRealmEntity.self), data.count > 0 {
+            guard let model = data.first as? FilterRealmEntity else { return }
+            let temp = FilterRealmEntity(value: model)
             temp.from = self.from
             temp.to = self.to
             try? dependencies.realmManager.updateObject(temp)
         } else {
-            let temp = FilterPersistenceModel()
+            let temp = FilterRealmEntity()
             temp.from = self.from
             temp.to = self.to
             dependencies.realmManager.saveObject(temp)
